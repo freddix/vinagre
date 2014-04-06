@@ -1,11 +1,11 @@
 Summary:	GNOME VNC client
 Name:		vinagre
-Version:	3.10.2
+Version:	3.12.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://download.gnome.org/sources/vinagre/3.10/%{name}-%{version}.tar.xz
-# Source0-md5:	8d61c061e60dc296c4cfa4ab40206eaf
+Source0:	http://download.gnome.org/sources/vinagre/3.12/%{name}-%{version}.tar.xz
+# Source0-md5:	9da781f9dba77cbec7bb9348a5038d58
 URL:		http://www.gnome.org/projects/vinagre/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -39,8 +39,9 @@ Vinagre is a VNC client for the GNOME desktop environment.
     -i -e 's/GNOME_MAINTAINER_MODE_DEFINES//g'	\
     -i -e 's/GNOME_COMMON_INIT//g'		\
     -i -e 's/GNOME_CXX_WARNINGS.*//g'		\
-    -i -e 's/GNOME_DEBUG_CHECK//g' configure.ac
-
+    -i -e 's/GNOME_DEBUG_CHECK//g'		\
+    -i -e '/APPDATA_XML/d' configure.ac
+%{__sed} -i '/@APPDATA_XML_RULES@/d' Makefile.am
 
 %build
 %{__intltoolize}
@@ -60,6 +61,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/GConf
+
 %find_lang vinagre --with-gnome --with-omf
 
 %clean
@@ -75,7 +78,7 @@ rm -rf $RPM_BUILD_ROOT
 %update_gsettings_cache
 %update_mime_database
 %update_icon_cache hicolor
-%update_desktop_database_post
+%update_desktop_database
 
 %files -f vinagre.lang
 %defattr(644,root,root,755)
