@@ -1,11 +1,11 @@
 Summary:	GNOME VNC client
 Name:		vinagre
-Version:	3.12.0
+Version:	3.12.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://download.gnome.org/sources/vinagre/3.12/%{name}-%{version}.tar.xz
-# Source0-md5:	9da781f9dba77cbec7bb9348a5038d58
+# Source0-md5:	6ee8d976daabd3de6c3976d1a460ea30
 URL:		http://www.gnome.org/projects/vinagre/
 BuildRequires:	autoconf
 BuildRequires:	automake
