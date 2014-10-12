@@ -1,11 +1,11 @@
 Summary:	GNOME VNC client
 Name:		vinagre
-Version:	3.12.1
+Version:	3.14.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://download.gnome.org/sources/vinagre/3.12/%{name}-%{version}.tar.xz
-# Source0-md5:	6ee8d976daabd3de6c3976d1a460ea30
+Source0:	http://download.gnome.org/sources/vinagre/3.14/%{name}-%{version}.tar.xz
+# Source0-md5:	29640307d8f57623a915d286db516b9f
 URL:		http://www.gnome.org/projects/vinagre/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -40,8 +40,8 @@ Vinagre is a VNC client for the GNOME desktop environment.
     -i -e 's/GNOME_COMMON_INIT//g'		\
     -i -e 's/GNOME_CXX_WARNINGS.*//g'		\
     -i -e 's/GNOME_DEBUG_CHECK//g'		\
-    -i -e '/APPDATA_XML/d' configure.ac
-%{__sed} -i '/@APPDATA_XML_RULES@/d' Makefile.am
+    -i -e '/APPSTREAM_XML/d' configure.ac
+%{__sed} -i '/@APPSTREAM_XML_RULES@/d' Makefile.am
 
 %build
 %{__intltoolize}
